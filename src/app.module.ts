@@ -6,6 +6,8 @@ import { FilesModule } from './files/files.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule} from "@nestjs/config";
 import * as process from "process";
+import {UserEntity} from "./users/entities/user.entity";
+import {FileEntity} from "./files/entities/file.entity";
 
 @Module({
   imports: [
@@ -17,7 +19,10 @@ import * as process from "process";
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [],
+      entities: [
+          UserEntity,
+          FileEntity,
+      ],
       synchronize: true,
     }),
     UsersModule,
